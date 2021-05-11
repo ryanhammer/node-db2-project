@@ -33,6 +33,30 @@ router.post(
   }
 );
 
+router.put(
+  '/:id',
+  checkCarPayload,
+  checkCarId,
+  checkVinNumberValid,
+  checkVinNumberUnique,
+  (req, res, next) =>
+  {
+    Cars.updateById(req.params.id, req.body)
+      .then( car => {
+        res.status(200).json(car);
+      })
+      .catch(next)
+  }
+);
+
+router.delete('/:id', checkCarId, (req, res, next) => {
+  Cars.deleteById(req.params.id)
+    .then( car => {
+      res.status(200).json(car);
+    })
+    .catch(next)
+});
+
 router.use( (err, req, res ) => {
   res.status(err.status || 500).json({
     note: "Something went wrong in the cars router",
