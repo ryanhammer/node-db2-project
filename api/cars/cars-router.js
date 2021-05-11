@@ -2,7 +2,7 @@ const express = require('express');
 
 const Cars = require('./cars-model');
 
-const { checkCarPayload, checkVinNumberValid, checkCarId } = require('./cars-middleware');
+const { checkCarPayload, checkVinNumberValid, checkCarId, checkVinNumberUnique } = require('./cars-middleware');
 
 const router = express.Router()
 
@@ -18,7 +18,12 @@ router.get('/:id', checkCarId, (req, res) => {
   res.status(200).json(req.car);
 });
 
-router.post('/', checkCarPayload, checkVinNumberValid, (req, res, next) => 
+router.post(
+  '/',
+  checkCarPayload,
+  checkVinNumberValid,
+  checkVinNumberUnique,
+  (req, res, next) => 
   {
     Cars.create(req.body)
       .then(car => {
