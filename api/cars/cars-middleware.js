@@ -21,19 +21,19 @@ const checkCarId = async (req, res, next) => {
 }
 
 const checkCarPayload = (req, res, next) => {
-    const vin = req.body.vin.trim();
-    const make = req.body.make.trim();
-    const model = req.body.model.trim();
+    const vin = req.body.vin;
+    const make = req.body.make;
+    const model = req.body.model;
     const mileage = req.body.mileage;
-    if (!vin || vin.length === 0) {
+    if (!vin || vin.trim().length === 0) {
       res.status(400).json({
         message: "vin is missing"
       });
-    } else if (!make || make.length === 0) {
+    } else if (!make || make.trim().length === 0) {
       res.status(400).json({
         message: "make is missing"
       });
-    } else if (!model || model.length === 0) {
+    } else if (!model || model.trim().length === 0) {
       res.status(400).json({
         message: "model is missing"
       });
@@ -42,9 +42,9 @@ const checkCarPayload = (req, res, next) => {
         message: "mileage is missing"
       });
     } else {
-      req.body.vin = vin;
-      req.body.make = make;
-      req.body.model = model;
+      req.body.vin = vin.trim();
+      req.body.make = make.trim();
+      req.body.model = model.trim();
       next();
     }
 }
