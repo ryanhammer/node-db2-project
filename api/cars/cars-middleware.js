@@ -63,11 +63,13 @@ const checkVinNumberValid = (req, res, next) => {
 
 const checkVinNumberUnique = async (req, res, next) => {
   const allCars = await Cars.getAll();
+  const idToChange = parseInt(req.params.id);
   const getCarList = (carList) => {
     if (req.params.id) {
       const filteredCars = carList.filter( car => {
-        return car.id !== req.params.id
+        return car.id !== idToChange
       });
+      console.log(filteredCars);
       return filteredCars;
     } else {
       return carList;

@@ -1,7 +1,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable('cars', table => {
     // primary key car_id is an integer, autoincrementing...
-    table.increments('car_id');
+    table.increments('id');
     table.text('vin', 255).unique().notNullable();
     table.text('make', 128).notNullable();
     table.text('model', 128).notNullable();

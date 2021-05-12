@@ -5,7 +5,7 @@ exports.seed = async function(knex) {
   // Inserts seed entries
   await knex('cars').insert([
     {
-      vin: '13738492051111111',
+      vin: '1FDTF4HT5FEA48134',
       make: 'ford',
       model: 'F150',
       mileage: 88291,
@@ -13,7 +13,7 @@ exports.seed = async function(knex) {
       transmission: 'automatic'
     },
     {
-      vin: '11115672130891111',
+      vin: 'JTECX9FJ7D5005956',
       make: 'toyota',
       model: 'camry',
       mileage: 18876,
@@ -21,18 +21,18 @@ exports.seed = async function(knex) {
       transmission: 'auto'
     },
     {
-      vin: '11551111116784111',
+      vin: 'JF1GE6B61AH511147',
       make: 'subaru',
       model: 'impreza',
       mileage: 61855,
       transmission: 'manual'
     },
     {
-      vin: '21551164667841113',
+      vin: '5XYPK4A10GG047797',
       make: 'kia',
       model: 'telluride',
       mileage: 11721,
       title: 'salvage'
     }
   ]);
-};
+}
